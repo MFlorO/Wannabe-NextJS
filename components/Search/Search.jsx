@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 
-
-
 const Search = ({character, setCharacterCopia, setMaximo}) => {
   
   const [search, setSearch] = useState(""); //Estado del input
@@ -23,10 +21,10 @@ const Search = ({character, setCharacterCopia, setMaximo}) => {
    let resultadosBusqueda = character.filter( e =>  e.name.toString().toLowerCase().includes(elemenoBusqueda)) //Filtro el original
 
    if(resultadosBusqueda.length > 0) {
-     	setCharacterCopia(resultadosBusqueda) 
+     	setCharacterCopia(resultadosBusqueda) //Muestro la copia
       setMaximo(Math.ceil(resultadosBusqueda.length / 10) - 1 )  //Resetear la cantidad total de paginas porque cuando busco algo en search va a disminuir el array total
     }else{
-       setCharacterCopia("") //Muestro la copia
+       setCharacterCopia("") //Muestro cuando no se encuentra nada 
     }
   };
 

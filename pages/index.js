@@ -35,10 +35,8 @@ export default function Home({ data }) {
  const offset = pagina * itemsPorPagina;
  const limit = offset + itemsPorPagina;
 
-
- const filterCharacterPagina = () =>  characterCopia.slice( offset , limit  ) //"corto" al estado data en 10. Así logro tener 10 character por pagina
+ const filterCharacterPagina = () =>  characterCopia.slice( offset , limit  ) //"corto" al estado characterCopia en 10. Así logro tener 10 character por pagina
   
-
   return (
     <>
       <Head>
@@ -48,6 +46,7 @@ export default function Home({ data }) {
       </Head>
 
       <main >
+
       <HeadComponent />
 
       <Search character={character} setCharacterCopia={setCharacterCopia} setMaximo={setMaximo}/>
@@ -60,7 +59,6 @@ export default function Home({ data }) {
          
           <Paginated pagina={pagina} setPagina={setPagina} maximo={maximo} />
 
-      
      
             {characterCopia.length > 0 &&
 
@@ -73,13 +71,12 @@ export default function Home({ data }) {
                   <Link href={`/detail/${id}`} key={id} className="w-1/4 flex justify-center">
                     <Characters name={name} />
                   </Link>
-                )
-              })
-            
+                )})          
             }
 
             {
-              filterCharacterPagina() === "" && (<p className=" my-7 font-sains text-4xl text-center text-zinc-200" >NO HAY NADA</p>)
+              filterCharacterPagina() === "" && (<p className=" my-7 font-sains text-4xl text-center text-zinc-200" >NO HAY NADA</p>) 
+              //Muestro cuando no encuentra nada. Componente Search linea 27
             }
 
           </div>
