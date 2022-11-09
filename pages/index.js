@@ -3,6 +3,7 @@ import Head,{useState} from 'next/head'
 import {HeadComponent, Characters} from "../components"
 import Link from "next/link"
 
+
 export async function getServerSideProps () {
   // Con el Fetch conecto a la api
   const res = await fetch( `http://localhost:3000/api/characters` )
