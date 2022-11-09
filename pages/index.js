@@ -1,6 +1,7 @@
 import Head,{useState} from 'next/head'
 // import styles from '../styles/Home.module.css'
 import {HeadComponent, Characters} from "../components"
+import Link from "next/link"
 
 export async function getServerSideProps () {
   // Con el Fetch conecto a la api
@@ -41,9 +42,9 @@ export default function Home({ data }) {
                 const id = url.slice(29); //Para obtener el id unico de cada character y luego utilizarlo en la ruta detail
 
                 return (
-                  <div className="w-full flex justify-center">
+                  <Link href={`/detail/${id}`} key={id} className="w-full flex justify-center">
                     <Characters id={id} name={name} />
-                  </div>
+                  </Link>
                 )
               })
 
