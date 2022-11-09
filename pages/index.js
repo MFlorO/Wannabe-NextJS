@@ -51,11 +51,11 @@ export default function Home({ data }) {
 
       <Search character={character} setCharacterCopia={setCharacterCopia} setMaximo={setMaximo}/>
 
-        <div className="bg-black  h-full w-full flex flex-col justify-center items-center">
+        <div className="bg-black h-[110vh] w-full flex flex-col justify-start items-center">
 
-         <div className="border-2 border-zinc-900 shadow-xxl shadow-neutral-600/40 mt-16 h-full w-1/2 flex flex-col justify-center items-center">
+         <div className="border-2 border-zinc-900 shadow-xxl shadow-neutral-600/40 my-16 h-full w-1/2 flex flex-col justify-center items-center">
          
-         <h2 className=" my-7 font-sains text-4xl text-center text-zinc-200">CHARACTERS</h2>
+         <h2 className=" mb-8 font-sains text-4xl text-center text-zinc-200">CHARACTERS</h2>
          
           <Paginated pagina={pagina} setPagina={setPagina} maximo={maximo} />
 
@@ -75,7 +75,7 @@ export default function Home({ data }) {
             }
 
             {
-              filterCharacterPagina() === "" && (<p className=" my-7 font-sains text-4xl text-center text-zinc-200" >NO HAY NADA</p>) 
+              filterCharacterPagina() === "" && (<p className=" my-7 font-sains text-4xl text-center text-zinc-200">THERE IS NOTHING BY THAT NAME.¡TRY ANOTHER!</p>) 
               //Muestro cuando no encuentra nada. Componente Search linea 27
             }
 
