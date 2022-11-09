@@ -9,7 +9,7 @@ const ButtonPaginadoNext = ({pagina, setPagina, maximo}) => {
       <button
         onClick={next}
         disabled={pagina === maximo}
-        className="bg-black hover:bg-zinc-800 font-sains text-zinc-200 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        className="bg-black hover:bg-zinc-800 font-sains text-zinc-200 font-semibold py-2 px-6 border border-gray-400 rounded shadow"
       > NEXT
       </button>
     </div>
