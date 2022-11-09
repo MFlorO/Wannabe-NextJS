@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
-import {HeadComponent, Characters, Paginated} from "../components"
+import {HeadComponent, Characters, Paginated, Search} from "../components"
 import Link from "next/link"
 
 
@@ -17,23 +17,27 @@ export async function getServerSideProps () {
 
 export default function Home({ data }) {
 
-
   const [character, setCharacter] = useState(data)
 
-  const [pagina, setPagina] = useState(1);
+  const [characterCopia, setCharacterCopia] = useState(data) //Copia de Character que la que muestro
+
+  const [pagina, setPagina] = useState(0);  //Pagina actual
+
+  const [maximo, setMaximo] = useState( Math.ceil(character.length / 10) - 1 )  //cantidad de paginas totales
 
   useEffect(() => {
    setCharacter(data)
+   setCharacterCopia(data)
   }, [data, setCharacter])
 
-  console.log("character", character)
   
- const maximo = character.length / 10
+ const itemsPorPagina = 10;
+ const offset = pagina * itemsPorPagina;
+ const limit = offset + itemsPorPagina;
 
 
- const filterCharacterPagina = () =>  character.slice( pagina , pagina + 10 ) //"corto" al estado data en 10. Así logro tener 10 character por pagina
-    
-
+ const filterCharacterPagina = () =>  characterCopia.slice( offset , limit  ) //"corto" al estado data en 10. Así logro tener 10 character por pagina
+  
 
   return (
     <>
@@ -44,17 +48,21 @@ export default function Home({ data }) {
       </Head>
 
       <main >
+      <HeadComponent />
 
-        <div className="bg-neutral-700 h-full w-full -z-20 flex flex-col">
-          <HeadComponent />
+      <Search character={character} setCharacterCopia={setCharacterCopia} setMaximo={setMaximo}/>
 
-          <h2 className=" my-7 font-sains text-4xl text-center text-zinc-200 underline decoration-soli">CHARACTERS</h2>
+        <div className="bg-black  h-full w-full flex flex-col justify-center items-center">
+
+         <div className="border-2 border-zinc-900 shadow-xxl shadow-neutral-600/40 mt-16 h-full w-1/2 flex flex-col justify-center items-center">
+         
+         <h2 className=" my-7 font-sains text-4xl text-center text-zinc-200">CHARACTERS</h2>
          
           <Paginated pagina={pagina} setPagina={setPagina} maximo={maximo} />
 
-          <div className="h-full">
-
-            {data.length > 0 &&
+      
+     
+            {characterCopia.length > 0 &&
 
               filterCharacterPagina().map((c) => {
 
@@ -66,7 +74,13 @@ export default function Home({ data }) {
                     <Characters id={id} name={name} />
                   </Link>
                 )
-              })}
+              })
+            
+            }
+
+            {
+              filterCharacterPagina() === "" && (<p className=" my-7 font-sains text-4xl text-center text-zinc-200" >NO HAY NADA</p>)
+            }
 
           </div>
           </div>
