@@ -15,13 +15,12 @@ const Details = ({data}) => {
   const { name, gender, eye_color, skin_color, hair_color, height, mass } = data
 
   return (
-    <div className="bg-neutral-700 h-screen w-full -z-20 flex flex-col ">
+    <>
+    <NavBar /> {/*  Reutilizo el componente */}
+    <div className="bg-black h-screen w-full flex flex-col justify-center items-center">
+    <div className="border-2 border-zinc-900 shadow-xxl shadow-neutral-600/40 w-1/2 flex flex-col justify-center items-center">  
       
-      <NavBar /> {/*  Reutilizo el componente */}
-      
-      <div className="w-full mt-20 flex flex-col justify-center items-center ">
         <h2 className="font-sains text-5xl text-zinc-200 mb-4">{name.toUpperCase()}</h2>
-
         <div className="font-sains text-2xl text-zinc-200">
         <p>Gender: {gender}</p>
         <p>Eyer Color: {eye_color}</p>
@@ -31,8 +30,9 @@ const Details = ({data}) => {
         <p>Mass: {mass}</p>
         </div>
 
-      </div>
+     </div>
     </div>
+    </>
   );
 };
 
