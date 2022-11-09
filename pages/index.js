@@ -1,6 +1,6 @@
-import Head,{useState} from 'next/head'
-// import styles from '../styles/Home.module.css'
-import {HeadComponent, Characters} from "../components"
+import React, {useState, useEffect} from 'react'
+import Head from 'next/head'
+import {HeadComponent, Characters, Paginated} from "../components"
 import Link from "next/link"
 
 
@@ -18,6 +18,23 @@ export async function getServerSideProps () {
 export default function Home({ data }) {
 
 
+  const [character, setCharacter] = useState(data)
+
+  const [pagina, setPagina] = useState(1);
+
+  useEffect(() => {
+   setCharacter(data)
+  }, [data, setCharacter])
+
+  console.log("character", character)
+  
+ const maximo = character.length / 10
+
+
+ const filterCharacterPagina = () =>  character.slice( pagina , pagina + 10 ) //"corto" al estado data en 10. Así logro tener 10 character por pagina
+    
+
+
   return (
     <>
       <Head>
@@ -32,12 +49,14 @@ export default function Home({ data }) {
           <HeadComponent />
 
           <h2 className=" my-7 font-sains text-4xl text-center text-zinc-200 underline decoration-soli">CHARACTERS</h2>
+         
+          <Paginated pagina={pagina} setPagina={setPagina} maximo={maximo} />
 
-          <div className="h-96">
+          <div className="h-full">
 
             {data.length > 0 &&
 
-              data.map((c) => {
+              filterCharacterPagina().map((c) => {
 
                 const { url, name } = c;
                 const id = url.slice(29); //Para obtener el id unico de cada character y luego utilizarlo en la ruta detail
@@ -47,9 +66,7 @@ export default function Home({ data }) {
                     <Characters id={id} name={name} />
                   </Link>
                 )
-              })
-
-            }
+              })}
 
           </div>
           </div>
