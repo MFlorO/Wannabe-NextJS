@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export async function getServerSideProps () {
   // Con el Fetch conecto a la api
-  const res = await fetch( `http://localhost:3000/api/characters` )
+  const res = await fetch( `https://wannabe-next-js.vercel.app/api/characters` )
   const data = await res.json()
 
   //Paso data a la pagina por props
