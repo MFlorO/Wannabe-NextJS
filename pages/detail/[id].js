@@ -2,7 +2,7 @@ import React  from "react";
 import { NavBar } from "../../components";
 
 export async function getServerSideProps ( { params } ) { //id por params
-    const personaje = await fetch( `http://localhost:3000/api/character/${params.id}` )
+    const personaje = await fetch( `https://wannabe-next-js.vercel.app/api/character/${params.id}` )
     const data = await personaje.json()
     return { props: { data } }
 }
