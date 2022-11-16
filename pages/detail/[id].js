@@ -2,11 +2,11 @@ import React  from "react";
 import { NavBar } from "../../components";
 
 
-const baseURLID = process.env.REACT_APP_API ||  "https://wannabe-next-js.vercel.app/api/character";
+const baseURL= process.env.REACT_APP_API ||  "https://wannabe-next-js.vercel.app/api/character";
 
 
 export async function getServerSideProps ( { params } ) { //id por params
-    const personaje = await fetch( `${baseURLID}/${params.id}` )
+    const personaje = await fetch( `${baseURL}/${params.id}` )
     const data = await personaje.json()
     return { props: { data } }
 }
