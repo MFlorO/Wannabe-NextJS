@@ -1,5 +1,4 @@
 
-const baseURL = "https://swapi.py4e.com/api/people" || "http://localhost:3001";
 
 const llamada = async ( url, personajes = [] ) => {
     const resp = await fetch( url )
@@ -15,7 +14,7 @@ const llamada = async ( url, personajes = [] ) => {
 
 export default async function handler ( req, res ) {
 
-    const data = await llamada( `${baseURL}` )
+    const data = await llamada( "https://swapi.py4e.com/api/people" )
 
     res.status( 200 ).json( data )
 }
