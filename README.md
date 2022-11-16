@@ -6,3 +6,6 @@ Crear un archivo en api llamado .env, que tendrá la siguiente estructura:
 PARA FINALIZAR:
  - npm i
  - npm run dev
+
+
+WEB: https://wannabe-next-js.vercel.app/
