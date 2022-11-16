@@ -3,10 +3,11 @@ import Head from 'next/head'
 import {HeadComponent, Characters, Paginated, Search} from "../components"
 import Link from "next/link"
 
+const baseURL = "http://localhost:3000/api/characters" || "https://wannabe-next-js.vercel.app" ;
 
 export async function getServerSideProps () {
   // Con el Fetch conecto a la api
-  const res = await fetch( `https://wannabe-next-js.vercel.app/api/characters` )
+  const res = await fetch( baseURL )
   const data = await res.json()
 
   //Paso data a la pagina por props
