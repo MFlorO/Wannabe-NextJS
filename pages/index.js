@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import {HeadComponent, Characters, Paginated, Search} from "../components"
+
+// import dotenv from "dotenv"
+// dotenv.config();
+
 import Link from "next/link"
 
-const baseURL = "http://localhost:3000/api/characters" || "https://wannabe-next-js.vercel.app/api/characters" ;
+const baseURL = process.env.REACT_APP_API || "https://wannabe-next-js.vercel.app/api/characters" ;
 
 export async function getServerSideProps () {
   // Con el Fetch conecto a la api
