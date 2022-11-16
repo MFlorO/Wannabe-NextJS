@@ -3,7 +3,7 @@ import Head from 'next/head'
 import {HeadComponent, Characters, Paginated, Search} from "../components"
 import Link from "next/link"
 
-const baseURL = "http://localhost:3000/api/characters" || "https://wannabe-next-js.vercel.app/api/charachters" ;
+const baseURL = "http://localhost:3000/api/characters" || "https://wannabe-next-js.vercel.app/api/characters" ;
 
 export async function getServerSideProps () {
   // Con el Fetch conecto a la api
