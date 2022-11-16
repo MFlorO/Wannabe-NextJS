@@ -70,7 +70,7 @@ export default function Home({ data }) {
               filterCharacterPagina().map((c) => {
 
                 const { url, name } = c;
-                const id = url.slice(29); //Para obtener el id unico de cada character y luego utilizarlo en la ruta detail
+                const id = url.slice(33); //Para obtener el id unico de cada character y luego utilizarlo en la ruta detail
 
                 return (
                   <Link href={`/detail/${id}`} key={id} className="w-1/4 flex justify-center">
